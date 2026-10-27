@@ -1,0 +1,25 @@
+name: Swift checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  swift:
+    runs-on: macos-15
+    steps:
+      - name: Fetch source without third-party actions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh repo clone "$GITHUB_REPOSITORY" "$RUNNER_TEMP/jumpforge"
+          cd "$RUNNER_TEMP/jumpforge"
+          git -c credential.helper='!gh auth git-credential' fetch origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Build and test native Swift package
+        run: |
+          cd "$RUNNER_TEMP/jumpforge"
+          swift build
+          sh Scripts/check.sh
+      - name: Compile iOS simulator target
+        run: |
+          cd "$RUNNER_TEMP/jumpforge"
+          xcodebuild -project iOS/JumpForge.xcodeproj -scheme JumpForge -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
