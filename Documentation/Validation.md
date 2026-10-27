@@ -24,7 +24,7 @@ Run checks at an exact source revision and save the device model, OS, compiler, 
 
 ## Check iPhone capture
 
-- [ ] Compile the iOS simulator target with full Xcode.
+- [x] Compile the iOS simulator target with full Xcode. [GitHub Xcode run](https://github.com/Koquda/JumpForge/actions/runs/40521357968) passed at code revision 3343af9.
 - [ ] Run the app on the lowest supported physical phone and a newer phone.
 - [ ] Exercise granted and denied camera permission.
 - [ ] Verify supported 120 or 240 fps configuration through actual recorded samples.
@@ -57,4 +57,4 @@ All budgets below are proposed. They are not measured speed claims.
 
 The first implementation uses manual review as the confirmation gate. Pose-derived suggestions require local visual checks and independent validation. They do not establish actual foot contact. Imported video timing can be ambiguous even if its sample spacing is regular. Frame sampling bounds do not account for posture changes or all measurement errors.
 
-The initial development environment has Swift command-line tools but no full Xcode installation. Native Mac execution is locally verifiable. iOS SDK compilation, physical capture, signing, TestFlight distribution, and force-plate validation require separate evidence.
+The initial development environment has Swift command-line tools but no full Xcode installation. Native Mac execution passed locally, and iOS simulator compilation passed remotely in GitHub's Xcode environment. Physical capture, distribution signing, TestFlight distribution, and force-plate validation require separate evidence.

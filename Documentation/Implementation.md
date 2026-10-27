@@ -1,6 +1,6 @@
 # Inspect the first implementation
 
-The repository contains a native Swift app with a Mac companion and an iPhone target. It implements the record or import, review, save, and compare workflow. iPhone recording source is included, but it has not been compiled or exercised in the initial environment because full Xcode and an iPhone are unavailable.
+The repository contains a native Swift app with a Mac companion and an iPhone target. It implements the record or import, review, save, and compare workflow. The iPhone simulator target compiled successfully in GitHub's Xcode environment. Physical iPhone capture has not been exercised.
 
 ## Inspect the completed functionality
 
@@ -36,7 +36,7 @@ The live Mac check used an isolated library through `JUMPFORGE_DATA_DIR`. It cre
 
 ## Track the open release gates
 
-The Mac app has compiled and run. Full iOS SDK compilation, camera permissions, high-speed capture, signing, accessibility checks on devices, thermal measurements, performance budgets, paired My Jump comparison, and force-plate validation remain open. The native iOS build command and CI job are included so the iOS build can be checked in an Xcode environment.
+The Mac app has compiled and run. The iPhone simulator target also compiled in [GitHub's successful Xcode run](https://github.com/Koquda/JumpForge/actions/runs/40521357968) at code revision 3343af9. Physical camera permissions, high-speed capture, distribution signing, accessibility checks on devices, thermal measurements, performance budgets, the paired My Jump comparison, and force-plate validation remain open.
 
 The automatic detector uses a coarse ankle-rise signal and can abstain. It cannot establish foot contact from pose landmarks alone. Do not describe it as validated automatic jump measurement.
 
