@@ -12,7 +12,7 @@ jobs:
         run: |
           gh repo clone "$GITHUB_REPOSITORY" "$RUNNER_TEMP/jumpforge"
           cd "$RUNNER_TEMP/jumpforge"
-          git fetch origin "$GITHUB_SHA"
+          git -c credential.helper='!gh auth git-credential' fetch origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
       - name: Build and test native Swift package
         run: |
